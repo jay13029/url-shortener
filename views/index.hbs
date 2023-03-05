@@ -1,4 +1,23 @@
-<form action="/" method="post" class="w-75">
-    <input class="form-control my-3" type="text" name="url" value="" placeholder="Input URL here">
+<form action="/" method="post" class="w-75" onsubmit="return CheckUrl()">
+    <input class="form-control my-3" type="text" id="url" name="url" value="" placeholder="Input URL here">
     <button class="btn btn-success" type="Submit">Shorten!</button>
 </form>
+
+<script>
+    function CheckUrl(){
+        const inputUrl = document.querySelector('#url').value
+        if (inputUrl.trim().length === 0) {
+            console.log(inputUrl)
+            alert('請輸入網址')
+            return false
+        } else {
+            const pattern = /^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)$/
+            if (!pattern.test(inputUrl)) {
+                alert('請輸入正確的網址(包含http開頭)')
+                return false
+            } else {
+                return true
+            }
+        }
+    }
+</script>
