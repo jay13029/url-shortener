@@ -1,6 +1,19 @@
 <h3>Success! Please use this link:</h3>
-<h2 class="my-4 text-primary">{{shortUrl}}</h2>
+<h2 class="my-4 text-primary" id="copy-url">{{shortUrl}}</h2>
 <div class="btn-area d-flex gap-2">
-    <button type="button" class="btn btn-info" >Copy</button>
+    <button type="button" class="btn btn-info" onclick="CopyUrl()">Copy</button>
     <a href="/" class="btn btn-success">Create a new one</a>
 </div>
+
+<script>
+    function CopyUrl(){
+        const copyUrl = document.getElementById('copy-url');
+        const range = document.createRange(); // 創建 Range 對象
+        range.selectNode(copyUrl); // 選擇文本節點
+        window.getSelection().removeAllRanges(); // 清空之前的選擇
+        window.getSelection().addRange(range); // 添加新的選擇
+        document.execCommand('copy'); // 複製文本到剪貼簿
+        window.getSelection().removeAllRanges(); // 清空選擇
+        alert('已複製到剪貼簿')
+    }
+</script>
