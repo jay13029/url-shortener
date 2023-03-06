@@ -21,7 +21,7 @@ function getCode(existCodes) {
   let code = getRandomChar(chars, 5)
 
   if (existCodes.includes(code)) {
-    return getCode()
+    return getCode(existCodes)
   } else {
     return code
   }
